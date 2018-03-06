@@ -96,9 +96,9 @@ const onSubmitContent = (files) => (dispatch, getState) => {
 }
 
 const getBlogs = () => (dispatch, getState) => {
-	// axios.post('https://blogs-ibcurt.herokuapp.com/get-blog')
 	let {limit, offset} = getState().write_blog
-	axios.post('http://localhost:2019/get-blog', {limit: limit, offset: offset})
+	// axios.post('http://localhost:2019/get-blog', {limit: limit, offset: offset})
+	axios.post('https://blogs-ibcurt.herokuapp.com/get-blog')
 	.then((response) => {
 		let {data, count} = response.data
 		dispatch({
