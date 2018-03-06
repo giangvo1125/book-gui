@@ -11,6 +11,9 @@ const initState = {
 	valueContent: '', 
 	blogs: [], 
 	link: '', 
+	count: 0, 
+	limit: 10, 
+	offset: 0, 
 }
 
 function writeBlog(state = initState, action) {
@@ -24,6 +27,8 @@ function writeBlog(state = initState, action) {
 		case types.GET_BLOG:
 			return {...state, ...action.payload}
 		case types.UPDATE_VALUE_LINK:
+			return {...state, ...action.payload}
+		case types.CHANGE_PAGE:
 			return {...state, ...action.payload}
 		default:
 			return state;

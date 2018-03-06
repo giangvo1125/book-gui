@@ -95,18 +95,41 @@ const onSubmitContent = (files) => (dispatch, getState) => {
 	})
 }
 
-const getBlogs = () => (dispatch) => {
-	axios.get('https://blogs-ibcurt.herokuapp.com/get-blog')
+const getBlogs = () => (dispatch, getState) => {
+	// axios.post('https://blogs-ibcurt.herokuapp.com/get-blog')
+	let {limit, offset} = getState().write_blog
+	axios.post('http://localhost:2019/get-blog', {limit: limit, offset: offset})
 	.then((response) => {
-		// console.log('response ',response)
-		let {data} = response
+		let {data, count} = response.data
 		dispatch({
 			type: types.GET_BLOG, 
-			payload: {blogs: data}
+			payload: {blogs: data, count: count}
 		})
 	}, (err) => {
 		console.log('err ',err)
 	})
+}
+
+const changePage = (type = 'next') => (dispatch, getState) => {
+	let {limit, offset, count} = getState().write_blog
+	let newOffset = JSON.parse(JSON.stringify(offset))
+	if(type == 'next') {
+		newOffset = newOffset + limit;
+		if(newOffset > count) {
+			newOffset = count;
+		}
+	}
+	else {
+		newOffset = newOffset - limit;
+		if(newOffset < 0) {
+			newOffset = 0
+		}
+	}
+	dispatch({
+		type: types.CHANGE_PAGE, 
+		payload: {offset: newOffset}
+	})
+	dispatch(getBlogs());
 }
 
 module.exports = {
@@ -115,4 +138,5 @@ module.exports = {
 	onSubmitContent, 
 	getBlogs, 
 	updateLink, 
+	changePage, 
 }

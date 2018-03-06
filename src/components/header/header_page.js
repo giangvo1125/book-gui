@@ -44,7 +44,7 @@ class HeaderComponent extends Component {
 		return (
 			<header id="site-header" className="clearfix" role="banner">
 	            <div id="logo">
-	                <div className="container"> <a title="Scopic" href="https://demo.herothemes.com/scopic"> <img alt="Scopic" src="https://mk0herothemesdek9380.kinstacdn.com/wp-content/themes/scopic/images/logo.png" /> </a></div>
+	                <div className="container"> <a title="ibcurt"> <img alt="ibcurt" width="128" height="56" src="assets/images/logo1.png" /> </a></div>
 	            </div>
 	            <nav id="nav-primary-mobile" className="clearfix">
 	                <a className="menu-toggle" ><i className="fa fa-bars"></i>Write Blog</a>

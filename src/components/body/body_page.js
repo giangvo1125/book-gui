@@ -5,6 +5,9 @@ import Gallery from './help/gallery'
 import Image from './help/image'
 import Note from './help/note'
 import Status from './help/status-publish'
+
+import writeBlogAction from '../../actions/write_blog_action'
+
 class BodyComponent extends Component {
 	constructor(props, context) {
 		super(props);
@@ -65,7 +68,7 @@ class BodyComponent extends Component {
 		}
 	}
 	render() {
-		let {blogs} = this.props;
+		let {blogs, offset, count, limit} = this.props;
 		let elem = blogs.map((item, index) => {
 			return this._renderItem(item)
 			
@@ -79,7 +82,34 @@ class BodyComponent extends Component {
 	                    </ul>
 	                    <nav role="navigation" id="nav-below" className="site-navigation paging-navigation clearfix">
 	                        <ul className="clearfix">
-	                            <li className="nav-next"><a><i className="fa fa-chevron-right"></i></a></li>
+	                        	{
+	                        		offset >= 0 && offset < count && limit == elem.length ? 
+	                            	<li 
+	                            		className="nav-next" 
+	                            		onClick={(e) => {
+	                            			this.props.changePage()
+	                            		}}
+	                            	>
+	                            		<a>
+	                            			<i className="fa fa-chevron-right"></i>
+	                            		</a>
+	                            	</li> : 
+	                            	''
+	                        	}
+	                        	{
+	                        		offset >= 1 && offset <= count ? 
+	                            	<li 
+	                            		className="nav-previous" 
+	                            		onClick={(e) => {
+	                            			this.props.changePage('pre')
+	                            		}}
+	                            	>
+	                            		<a>
+	                            			<i className="fa fa-chevron-left"></i>
+	                            		</a>
+	                            	</li> : 
+	                            	''
+	                        	}
 	                        </ul>
 	                    </nav>
 	                </div>
@@ -96,8 +126,11 @@ BodyComponent.contextTypes = {
 const mapStateToProps = (state) => {
 	return {
 		blogs: state.write_blog.blogs, 
+		offset: state.write_blog.offset, 
+		count: state.write_blog.count, 
+		limit: state.write_blog.limit, 
 	}
 }
 
-export default connect(mapStateToProps, null)(BodyComponent)
+export default connect(mapStateToProps, writeBlogAction)(BodyComponent)
 
