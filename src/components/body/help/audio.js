@@ -20,19 +20,11 @@ class AudioComponent extends Component {
                         <iframe 
                             src={this.props.link || ''} 
                             width="450" height="199" 
-                            frameBorder="0" title={this.props.content || ''}    
-                            allowFullScreen 
+                            frameBorder="0" title={this.props.content || ''} 
                             data-rocket-lazyload="fitvidscompatible" 
                             data-lazy-src={this.props.link || ''} >
                         </iframe>
-                        <noscript>
-                            <iframe 
-                                src={this.props.link || ''} 
-                                width="450" height="199" 
-                                frameBorder="0" title={this.props.content || ''} 
-                                allowFullScreen>
-                            </iframe>
-                        </noscript>
+                        
                     </figure>
                 </div>
                 {/*<footer className="entry-footer">
