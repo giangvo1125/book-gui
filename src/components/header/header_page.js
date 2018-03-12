@@ -65,9 +65,9 @@ class HeaderComponent extends Component {
 	                        </ul>
 	                    </nav>
 	                    <ul id="social-icons" className="clearfix">
-	                        <li className="rss"> <a href="https://demo.herothemes.com/scopic/feed/"><i className="fa fa-rss"></i></a></li>
-	                        <li className="twitter"> <a href="https://twitter.com/herothemes" target="_blank"><i className="fa fa-twitter"></i></a></li>
-	                        <li className="facebook"> <a href="https://facebook.com/herothemes" target="_blank"><i className="fa fa-facebook"></i></a></li>
+	                        {/*<li className="rss"> <a href="https://demo.herothemes.com/scopic/feed/"><i className="fa fa-rss"></i></a></li>*/}
+	                        {/*<li className="twitter"> <a href="https://twitter.com/herothemes" target="_blank"><i className="fa fa-twitter"></i></a></li>*/}
+	                        {/*<li className="facebook"> <a href="https://facebook.com/herothemes" target="_blank"><i className="fa fa-facebook"></i></a></li>*/}
 	                    </ul>
 	                    <img width="95" height="95" className="avatar" src="https://mk0herothemesdek9380.kinstacdn.com/wp-content/uploads/sites/11/2013/07/avatar.png" alt=""/>
 	                </div>
