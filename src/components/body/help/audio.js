@@ -13,9 +13,14 @@ class AudioComponent extends Component {
                 className="post-46 post type-post status-publish format-video hentry category-category-trio tag-audio tag-media tag-video post_format-post-format-video clearfix">
                 <span className="entry-date"><span className="entry-meta-date"><time dateTime={this.props.time|| ''}>{this.props.time || ''}</time></span></span>
                 <div className="hentry-box">
-                    <div className="entry-status clearfix" style={{marginBottom: '5px'}}>
-                        <p style={{textShadow: '-0.25px 0 black, 0 0.25px black, 0.25px 0 black, 0 -0.25px black'}} >{this.props.content}</p>
-                    </div>
+                    {
+                        this.props.content ?
+                        <div className="entry-status clearfix" style={{marginBottom: '5px'}}>
+                            <p style={{textShadow: '-0.25px 0 black, 0 0.25px black, 0.25px 0 black, 0 -0.25px black'}} >
+                                {this.props.content}
+                            </p>
+                        </div> : ''
+                    }
                     <figure className="entry-video">
                         <iframe 
                             src={this.props.link || ''} 
